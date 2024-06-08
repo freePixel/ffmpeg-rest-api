@@ -1,0 +1,22 @@
+services:
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+
+    volumes:
+      - ./api/src:/app/src
+      - sqlite_data:/sqlite_data
+      - api_data:/api_data
+
+    ports:
+      - "4000:5000"
+
+    env_file:
+      - ./api/.env
+
+
+volumes:
+  sqlite_data:
+  api_data:
